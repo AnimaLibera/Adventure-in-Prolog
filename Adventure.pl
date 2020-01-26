@@ -63,7 +63,7 @@ do(inventory) :- inventory,!.
 do(look) :- look,!.
 do(take(X)) :- take(X),!.
 do(end).
-do(_) :- write('Invalid Command.')
+do(_) :- write('Invalid Command.').
 
 end_condition(end).
 end_condition(_) :-
