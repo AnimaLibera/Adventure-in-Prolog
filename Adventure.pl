@@ -47,12 +47,28 @@ have().
 connect(X,Y,Door) :- door(X,Y,Door).
 connect(X,Y,Door) :- door(Y,X,Door).
 
+%Does not work well.
 command_loop :-
+	write('Welcome to Nani Search.'), nl,	
 	repeat,
-	write('Enter Command (end to exist): '),
+	write('>nani> '),
 	read(X),
-	write(X),
-	X = end.
+	puzzle(X),
+	do(X), nl,
+	end_condition(X).
+
+do(goto(X)) :- goto(X),!.
+do(go(X)) :- goto(X),!.
+do(inventory) :- inventory,!.
+do(look) :- look,!.
+do(take(X)) :- take(X),!.
+do(end).
+do(_) :- write('Invalid Command.')
+
+end_condition(end).
+end_condition(_) :-
+	have(nani),
+	write('Congraulations').
 
 list_things(Place) :-
 	location(X, Place),
