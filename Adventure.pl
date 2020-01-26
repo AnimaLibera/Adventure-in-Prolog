@@ -47,6 +47,13 @@ have().
 connect(X,Y,Door) :- door(X,Y,Door).
 connect(X,Y,Door) :- door(Y,X,Door).
 
+command_loop :-
+	repeat,
+	write('Enter Command (end to exist): '),
+	read(X),
+	write(X),
+	X = end.
+
 list_things(Place) :-
 	location(X, Place),
 	tab(2),
